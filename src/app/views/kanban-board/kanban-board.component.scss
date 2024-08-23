@@ -1,0 +1,33 @@
+@import "../../styles/variables";
+@import "../../styles/mixins";
+
+.kanban-board {
+  @include flex-center(row, center, space-between);
+  padding: $padding;
+  background-color: $primary-color;
+  margin: -$margin;
+
+  @include respond-to($breakpoint-sm) {
+    @include flex-center(column, center, flex-start);
+    padding: 10px;
+    margin: 0;
+  }
+}
+
+.kanban-column {
+  width: calc(30vw - 15px);
+  background-color: $background-color;
+  border-radius: $border-radius;
+  @include box-shadow(0 5px 10px $shadow-color);
+  text-align: left;
+  margin: 0 $margin;
+
+  @include respond-to($breakpoint-md) {
+    width: calc(45vw - 15px);
+  }
+
+  @include respond-to($breakpoint-sm) {
+    width: calc(90vw - 15px);
+    margin: 10px 5px;
+  }
+}
