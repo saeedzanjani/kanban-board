@@ -1,0 +1,26 @@
+@mixin box-shadow($shadows...) {
+  $box-shadow: null;
+
+  @each $shadow in $shadows {
+    @if $box-shadow != null {
+      $box-shadow: $box-shadow, $shadow;
+    } @else {
+      $box-shadow: $shadow;
+    }
+  }
+
+  box-shadow: $box-shadow;
+}
+
+@mixin flex-center($direction: row, $align: center, $justify: center) {
+  display: flex;
+  flex-direction: $direction;
+  align-items: $align;
+  justify-content: $justify;
+}
+
+@mixin respond-to($breakpoint) {
+  @media (max-width: $breakpoint) {
+    @content;
+  }
+}
