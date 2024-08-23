@@ -10,6 +10,7 @@ import { Observable } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { Task } from '../../models/task.model';
 import { TaskItemComponent } from '../task-item/task-item.component';
+import { KanbanColumnHeaderComponent } from '../kanban-column-header/kanban-column-header.component';
 
 @Component({
   selector: 'app-kanban-column',
@@ -17,7 +18,12 @@ import { TaskItemComponent } from '../task-item/task-item.component';
   styleUrls: ['./kanban-column.component.scss'],
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [CommonModule, TaskItemComponent, DragDropModule],
+  imports: [
+    CommonModule,
+    TaskItemComponent,
+    DragDropModule,
+    KanbanColumnHeaderComponent,
+  ],
 })
 export class KanbanColumnComponent {
   @Input() column!: string;

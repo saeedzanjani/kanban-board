@@ -1,4 +1,8 @@
-<h3>{{ column }}</h3>
+<app-kanban-column-header
+  [backgroundColor]="getColumnBackgroundColor(column)"
+  [column]="column"
+>
+</app-kanban-column-header>
 
 @if (tasks$ | async; as tasks) {
 <ng-container>
