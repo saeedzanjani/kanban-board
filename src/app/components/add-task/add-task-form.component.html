@@ -1,0 +1,25 @@
+<form [formGroup]="taskForm" class="add-task-form" (ngSubmit)="addTask()">
+  <mat-form-field appearance="outline">
+    <mat-label>Task Description</mat-label>
+    <input matInput formControlName="taskDescription" />
+    <mat-error
+      *ngIf="
+        taskForm.get('taskDescription')?.invalid &&
+        taskForm.get('taskDescription')?.touched
+      "
+    >
+      Task description is required.
+    </mat-error>
+  </mat-form-field>
+  <div class="button-group">
+    <button
+      mat-raised-button
+      color="primary"
+      type="submit"
+      [disabled]="taskForm.invalid"
+    >
+      Add Task
+    </button>
+    <button mat-button routerLink="/">Cancel</button>
+  </div>
+</form>

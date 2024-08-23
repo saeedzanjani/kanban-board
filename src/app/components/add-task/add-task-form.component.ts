@@ -13,9 +13,9 @@ import { Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-add-task',
-  templateUrl: './add-task.component.html',
-  styleUrls: ['./add-task.component.scss'],
+  selector: 'app-add-task-form',
+  templateUrl: './add-task-form.component.html',
+  styleUrls: ['./add-task-form.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
   imports: [
@@ -27,7 +27,7 @@ import { CommonModule } from '@angular/common';
     RouterModule,
   ],
 })
-export class AddTaskComponent implements OnInit {
+export class AddTaskFormComponent implements OnInit {
   taskForm!: FormGroup;
 
   constructor(

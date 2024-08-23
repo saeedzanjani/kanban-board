@@ -1,0 +1,86 @@
+@import "../../styles/variables";
+@import "../../styles/mixins";
+
+.add-task-container {
+  max-width: 400px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: $secondary-color;
+  border-radius: $border-radius;
+  @include box-shadow($box-shadow);
+  text-align: center;
+
+  h2 {
+    margin-bottom: 1.5rem;
+    color: $primary-color;
+    font-weight: $font-weight-bold;
+  }
+
+  .add-task-form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  @include respond-to($breakpoint-sm) {
+    max-width: 300px;
+    padding: 1.5rem;
+  }
+
+  @include respond-to($breakpoint-xs) {
+    max-width: 80%;
+    padding: 1rem;
+  }
+}
+
+mat-form-field {
+  width: 100%;
+  margin-bottom: 1rem;
+
+  &.mat-form-field-appearance-outline {
+    .mat-form-field-outline {
+      color: $primary-color;
+    }
+  }
+}
+
+.button-group {
+  display: flex;
+  justify-content: space-between;
+
+  button {
+    width: 48%;
+
+    &.mat-raised-button {
+      background-color: $primary-color;
+      color: $white-color;
+      transition: background-color 0.3s ease;
+
+      &:hover {
+        background-color: darken($primary-color, 10%);
+      }
+    }
+
+    &.mat-button {
+      color: $primary-color;
+
+      &:hover {
+        background-color: rgba($primary-color, 0.1);
+      }
+    }
+  }
+}
+
+@include respond-to($breakpoint-sm) {
+  .button-group {
+    flex-direction: column;
+
+    button {
+      width: 100%;
+      margin-bottom: 1rem;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
