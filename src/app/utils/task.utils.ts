@@ -1,7 +1,9 @@
 import { Task } from '../models/task.model';
 
 export function saveStateToLocalStorage(tasks: Task[]): void {
-  localStorage.setItem('tasks', JSON.stringify(tasks));
+  if (typeof localStorage !== 'undefined') {
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+  }
 }
 
 export function updateTaskOrder(
@@ -20,6 +22,11 @@ export function updateTaskOrder(
 }
 
 export function getDataFromLocalStorage(key: string): Task[] {
+  if (typeof localStorage === 'undefined') {
+    console.warn('localStorage is not available');
+    return [];
+  }
+
   try {
     const data = localStorage.getItem(key);
     if (data) {

@@ -12,7 +12,7 @@ export const addTask = createAction(
 );
 export const removeTask = createAction(
   '[Task] Remove Task',
-  props<{ taskId: any }>()
+  props<{ taskId: string }>()
 );
 export const updateTasks = createAction(
   '[Task] Update Tasks',

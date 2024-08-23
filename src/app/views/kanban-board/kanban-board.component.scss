@@ -1,5 +1,4 @@
-@import "../../styles/variables";
-@import "../../styles/mixins";
+@import "../../styles/global";
 
 .kanban-board {
   @include flex-center(row, center, space-between);
