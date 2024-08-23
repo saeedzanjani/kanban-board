@@ -1,1 +1,26 @@
-<p>kanban-column works!</p>
+<h3>{{ column }}</h3>
+
+@if (tasks$ | async; as tasks) {
+<ng-container>
+  <div
+    cdkDropList
+    [id]="column"
+    [cdkDropListConnectedTo]="columns"
+    [cdkDropListData]="getTasksForColumn(tasks, column)"
+    (cdkDropListDropped)="onDrop($event)"
+    class="kanban-list"
+  >
+    <div
+      *ngFor="let task of getTasksForColumn(tasks, column)"
+      cdkDrag
+      [cdkDragData]="task"
+    >
+      <app-task-item
+        class="kanban-item"
+        [task]="task"
+        (remove)="removeTask.emit(task.id)"
+      ></app-task-item>
+    </div>
+  </div>
+</ng-container>
+}

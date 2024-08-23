@@ -1,12 +1,49 @@
-import { Component } from '@angular/core';
+import {
+  Component,
+  Input,
+  Output,
+  EventEmitter,
+  ChangeDetectionStrategy,
+} from '@angular/core';
+import { CdkDragDrop, DragDropModule } from '@angular/cdk/drag-drop';
+import { Observable } from 'rxjs';
+import { CommonModule } from '@angular/common';
+import { Task } from '../../models/task.model';
+import { TaskItemComponent } from '../task-item/task-item.component';
 
 @Component({
   selector: 'app-kanban-column',
-  standalone: true,
-  imports: [],
   templateUrl: './kanban-column.component.html',
-  styleUrl: './kanban-column.component.scss'
+  styleUrls: ['./kanban-column.component.scss'],
+  standalone: true,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [CommonModule, TaskItemComponent, DragDropModule],
 })
 export class KanbanColumnComponent {
+  @Input() column!: string;
+  @Input() tasks$!: Observable<Task[]>;
+  @Input() columns!: string[];
+  @Output() drop = new EventEmitter<CdkDragDrop<Task[]>>();
+  @Output() removeTask = new EventEmitter<string>();
 
+  getTasksForColumn(tasks: Task[], column: string): Task[] {
+    return tasks.filter((task) => task.status === column);
+  }
+
+  onDrop(event: CdkDragDrop<Task[]>) {
+    this.drop.emit(event);
+  }
+
+  getColumnBackgroundColor(column: string): string {
+    switch (column) {
+      case 'To Do':
+        return '#ed9f9f';
+      case 'Implementing':
+        return '#f7e198';
+      case 'Done':
+        return '#8fec86';
+      default:
+        return '#ed9f9f';
+    }
+  }
 }

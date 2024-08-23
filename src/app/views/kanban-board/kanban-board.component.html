@@ -1,7 +1,13 @@
 <div class="kanban-board">
   @for (column of columns; track column) {
   <div class="kanban-column">
-    <app-kanban-column></app-kanban-column>
+    <app-kanban-column
+      [column]="column"
+      [tasks$]="tasks$"
+      [columns]="columns"
+      (drop)="drop($event, column)"
+      (removeTask)="removeTask($event)"
+    ></app-kanban-column>
   </div>
   }
 </div>
